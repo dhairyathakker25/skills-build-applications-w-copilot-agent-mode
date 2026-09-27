@@ -7,6 +7,16 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
+## API URL configuration
+
+For Codespaces, define `VITE_CODESPACE_NAME` in `octofit-tracker/frontend/.env.local` before starting Vite. The variable is required to build the forwarded API URL in Codespaces:
+
+```dotenv
+VITE_CODESPACE_NAME=your-codespace-name
+```
+
+The frontend then calls `https://<name>-8000.app.github.dev/api/<collection>/`. If the variable is unset, it safely falls back to `http://localhost:8000`.
+
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).

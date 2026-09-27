@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -108,4 +110,41 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+:root {
+  --forest: #174238;
+  --citron: #d3ee78;
+  --rust: #c85e3f;
+  --ink: #202b23;
+  --muted: #687268;
+  --line: #dfe3d9;
+  --display: 'Space Grotesk', 'Avenir Next', sans-serif;
+  --mono: 'SFMono-Regular', Consolas, monospace;
+  font: 14px/1.5 'DM Sans', 'Avenir Next', sans-serif;
+  color: var(--ink);
+  color-scheme: light;
+  background: #f0f1e9;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f0f1e9;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  display: block;
+  border: 0;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+::selection {
+  color: var(--forest);
+  background: var(--citron);
 }

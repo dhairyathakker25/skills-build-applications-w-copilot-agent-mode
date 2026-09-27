@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express from 'express';
 import './config/database.js';
 import { Activity, Leaderboard, Team, User, Workout } from './models/index.js';
@@ -9,7 +10,12 @@ const codespaceName = process.env.CODESPACE_NAME;
 const apiBaseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : 'http://localhost:8000';
+const frontendOrigins = ['http://localhost:5173'];
+if (codespaceName) {
+  frontendOrigins.push(`https://${codespaceName}-5173.app.github.dev`);
+}
 
+app.use(cors({ origin: frontendOrigins }));
 app.use(express.json());
 
 app.get('/api/', (_request, response) => {
