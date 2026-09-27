@@ -1,5 +1,10 @@
 import CollectionTable from './CollectionTable.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim().replace(/-8000$/, '')
+const endpoint = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/activities/`
+  : 'http://localhost:8000/api/activities/'
+
 const formatDate = (value) => {
   if (!value) return '—'
   const date = new Date(value)
@@ -21,7 +26,7 @@ const columns = [
 ]
 
 function Activities() {
-  return <CollectionTable collection="activities" title="Activity log" eyebrow="03 / DAILY MOVEMENT" columns={columns} />
+  return <CollectionTable collection="activities" endpoint={endpoint} title="Activity log" eyebrow="03 / DAILY MOVEMENT" columns={columns} />
 }
 
 export default Activities

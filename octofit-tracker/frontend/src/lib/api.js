@@ -1,11 +1,5 @@
-const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
-
-export const API_BASE_URL = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
-  : 'http://localhost:8000'
-
-export async function fetchCollection(collection, { signal } = {}) {
-  const response = await fetch(`${API_BASE_URL}/api/${collection}/`, {
+export async function fetchCollection(endpoint, { signal } = {}) {
+  const response = await fetch(endpoint, {
     headers: { Accept: 'application/json' },
     signal,
   })

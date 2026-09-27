@@ -15,6 +15,8 @@ For Codespaces, define `VITE_CODESPACE_NAME` in `octofit-tracker/frontend/.env.l
 VITE_CODESPACE_NAME=your-codespace-name
 ```
 
+`VITE_CODESPACE_NAME` may be either the base Codespace name or the forwarded API name ending in `-8000`; the frontend normalizes the optional suffix before constructing the URL.
+
 The frontend then calls `https://<name>-8000.app.github.dev/api/<collection>/`. If the variable is unset, it safely falls back to `http://localhost:8000`.
 
 ## React Compiler

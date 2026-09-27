@@ -1,5 +1,10 @@
 import CollectionTable from './CollectionTable.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim().replace(/-8000$/, '')
+const endpoint = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/teams/`
+  : 'http://localhost:8000/api/teams/'
+
 const columns = [
   { key: 'name', label: 'Team' },
   {
@@ -15,7 +20,7 @@ const columns = [
 ]
 
 function Teams() {
-  return <CollectionTable collection="teams" title="Teams" eyebrow="02 / COMMUNITY" columns={columns} />
+  return <CollectionTable collection="teams" endpoint={endpoint} title="Teams" eyebrow="02 / COMMUNITY" columns={columns} />
 }
 
 export default Teams

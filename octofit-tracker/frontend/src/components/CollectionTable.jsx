@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../lib/api.js'
 
-function CollectionTable({ collection, title, eyebrow, columns }) {
+function CollectionTable({ collection, endpoint, title, eyebrow, columns }) {
   const [records, setRecords] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -9,7 +9,7 @@ function CollectionTable({ collection, title, eyebrow, columns }) {
   useEffect(() => {
     const controller = new AbortController()
 
-    fetchCollection(collection, { signal: controller.signal })
+    fetchCollection(endpoint, { signal: controller.signal })
       .then(setRecords)
       .catch((requestError) => {
         if (requestError.name !== 'AbortError') setError(requestError.message)
@@ -19,7 +19,7 @@ function CollectionTable({ collection, title, eyebrow, columns }) {
       })
 
     return () => controller.abort()
-  }, [collection])
+  }, [collection, endpoint])
 
   return (
     <section className="collection-page" aria-labelledby={`${collection}-title`}>

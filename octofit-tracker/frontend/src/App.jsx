@@ -5,7 +5,6 @@ import Leaderboard from './components/Leaderboard.jsx'
 import Teams from './components/Teams.jsx'
 import Users from './components/Users.jsx'
 import Workouts from './components/Workouts.jsx'
-import { API_BASE_URL } from './lib/api.js'
 import './App.css'
 
 const navigation = [
@@ -53,10 +52,10 @@ function App() {
             <span className="topbar-divider">/</span>
             <span className="season-name">Fall movement season</span>
           </div>
-          <a className="api-origin" href={API_BASE_URL} target="_blank" rel="noreferrer">
+          <div className="api-origin">
             <span className="status-dot" />
             API connected
-          </a>
+          </div>
         </header>
 
         <main className="page-content">

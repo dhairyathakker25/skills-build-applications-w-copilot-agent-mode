@@ -1,5 +1,10 @@
 import CollectionTable from './CollectionTable.jsx'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim().replace(/-8000$/, '')
+const endpoint = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/`
+  : 'http://localhost:8000/api/leaderboard/'
+
 const columns = [
   {
     key: 'rank',
@@ -12,7 +17,7 @@ const columns = [
 ]
 
 function Leaderboard() {
-  return <CollectionTable collection="leaderboard" title="Leaderboard" eyebrow="04 / SEASON STANDINGS" columns={columns} />
+  return <CollectionTable collection="leaderboard" endpoint={endpoint} title="Leaderboard" eyebrow="04 / SEASON STANDINGS" columns={columns} />
 }
 
 export default Leaderboard
